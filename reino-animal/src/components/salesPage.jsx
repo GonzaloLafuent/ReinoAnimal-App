@@ -4,7 +4,7 @@ import {ScrollView,Pressable, SafeAreaView, StyleSheet, TextInput,Text, View,Ima
 
 export default SalesPage = () => {
     const [products,setProducts] = useState([])
-    const [text,onChangeText] = useState("")
+    const [inputProduct,setInputProduct] = useState("")
 
     const cobrar = () => {
         const sum = products.reduce((acc,product)=>
@@ -20,12 +20,24 @@ export default SalesPage = () => {
               },  
               {text: 'OK', onPress: () => console.log('OK Pressed')},  
           ]  
-      );  
+        )  
     }
 
     const search = () => {
-      products.push({name:text,price:125})
-      onChangeText("")
+      if(inputProduct != ""){
+        products.push({name:inputProduct,price:125})
+        setInputProduct("")
+      } else {
+        Alert.alert('Error','Ingrese el nombre de un producto',  
+        [  
+            {  
+                text: 'Cancel',    
+                style: 'cancel',  
+            },  
+            {text: 'OK'},  
+        ]  
+      )
+      }
     }
 
     return (
@@ -35,10 +47,11 @@ export default SalesPage = () => {
             <TextInput
                 style={styles.input}
                 placeholder="Producto"
-                onChangeText= {onChangeText}
+                value={inputProduct}
+                onChangeText= {(text) => setInputProduct(text)}
             />
             <View style = {styles.buttonPanel}>
-                <Pressable style = {styles.button} onPress={()=>{search}}>
+                <Pressable style = {styles.button} onPress={()=>{search()}}>
                     <Text>Buscar</Text>
                 </Pressable>
                 <Pressable style = {styles.button} onPress={()=>{setProducts([...products,{name:"DOG",price: 1255}])}}>
