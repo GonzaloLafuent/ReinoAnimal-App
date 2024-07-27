@@ -5,6 +5,7 @@ import {ScrollView,Pressable, SafeAreaView, StyleSheet, TextInput,Text, View,Ima
 export default SalesPage = () => {
     const [products,setProducts] = useState([])
     const [inputProduct,setInputProduct] = useState("")
+    const [inputUnidad,setInputUnidad] = useState(1)
 
     const cobrar = () => {
         const sum = products.reduce((acc,product)=>
@@ -25,8 +26,9 @@ export default SalesPage = () => {
 
     const search = () => {
       if(inputProduct != ""){
-        products.push({name:inputProduct,price:125})
+        products.push({name:inputProduct,price:(125*inputUnidad)})
         setInputProduct("")
+        setInputUnidad(1)
       } else {
         Alert.alert('Error','Ingrese el nombre de un producto',  
         [  
@@ -44,15 +46,22 @@ export default SalesPage = () => {
         <ScrollView style={styles.page}>
           <SafeAreaView style={styles.form}>
             <Image style={styles.image} source={require("../../assets/icon.png")}/>
-            <TextInput
+            <View flexDirection={"row"}>
+              <TextInput
                 style={styles.input}
                 placeholder="Producto"
                 value={inputProduct}
                 onChangeText= {(text) => setInputProduct(text)}
-            />
+              />
+              <TextInput placeholder="Unidad" style={styles.input} width={65}
+                 onChangeText= {(unidad) => setInputUnidad(unidad)}
+                 value={inputUnidad}
+              >
+              </TextInput>
+            </View>
             <View style = {styles.buttonPanel}>
                 <Pressable style = {styles.button} onPress={()=>{search()}}>
-                    <Text>Buscar</Text>
+                    <Text>Agregar</Text>
                 </Pressable>
                 <Pressable style = {styles.button} onPress={()=>{setProducts([...products,{name:"DOG",price: 1255}])}}>
                     <Text>Abrir QR</Text>
@@ -100,11 +109,12 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 40,
-    width: 330,
+    width: 285,
     marginBottom: 10,
     borderWidth: 1,
     borderRadius: 10,
     padding: 10,
+    margin: 2,
     backgroundColor: "white",
   },
   button: {

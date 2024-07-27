@@ -11,13 +11,17 @@ export default StorePage = () =>{
                     <View style={styles.header}>
                         <Text style={styles.headerTab}>Descripcion</Text>
                         <Text style={styles.headerTab}>Precio</Text>
+                        <Text style={styles.headerTab}>U</Text>
                     </View>
                     <View style={styles.tab}>
                         <View style={styles.cell}>
                             <Text>DOG</Text>
                         </View>
-                        <View style={styles.cell}>
+                        <View style={styles.cell} width={128}>
                             <Text>125</Text>
+                        </View>
+                        <View style={styles.cell} width={45}>
+                            <Text>1</Text>
                         </View>
                     </View>
                 </View>
@@ -30,7 +34,7 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: StatusBar.currentHeight,
         justifyContent: "center",
-        alignItems: "center"
+        alignItems: "flex-start"
     },
     title:{
         marginTop: 15,
