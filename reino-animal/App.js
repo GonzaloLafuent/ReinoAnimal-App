@@ -4,7 +4,7 @@ import SalesPage from './src/components/salesPage';
 import StorePage from './src/components/storePage';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,10 +12,12 @@ export default function App() {
   return (
     <NavigationContainer>
       <Tab.Navigator sceneContainerStyle={styles.container} screenOptions={({ route }) => ({
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: 'gray',
-        })} >
-        <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false}}/>
+          tabBarIcon: ({color}) => screenOptions(route, color),
+        })} 
+      >
+        <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false }}/>
         <Tab.Screen name="Stock" component={StorePage} options={{headerShown:false}}/>
         <Tab.Screen name="Añadir" component={StorePage} options={{headerShown:false}}/>
       </Tab.Navigator>
@@ -31,7 +33,25 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  tab: {
-    activeBackgroundColor: "#ff9933",
-  }
 });
+
+const screenOptions = (route, color) => {
+  let iconName;
+ 
+  switch (route.name) {
+    case 'Ventas':
+      iconName = 'cash';
+      break;
+    case 'Stock':
+      iconName = 'store';
+      break;
+    case 'Añadir':
+      iconName = 'upload';
+      break;
+    default:
+      break;
+  }
+ 
+  return <MaterialCommunityIcons name={iconName} color={color} size={24} />;
+ };
+ 
