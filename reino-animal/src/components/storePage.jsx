@@ -1,6 +1,6 @@
 
 
-export function storePage(){
+export default StorePage = () =>{
     return(
         <></>
     )
