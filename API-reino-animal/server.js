@@ -6,7 +6,15 @@ const app = express()
 
 const server_port = 3000
 
-//mongoose.connect(process.env.DATABASE_URL)
+main().catch((err) => console.log(err));
+async function main() {
+    try{
+        await mongoose.connect(process.env.DATABASE_URL);
+        console.log("Succesfull connection to the Database")
+    } catch(error) {
+        console.log(error.message)
+    }
+}
 
 app.use(express.json())
 
