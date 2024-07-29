@@ -28,15 +28,16 @@ router.patch("/:id", (request,response) => {
 //Ruta para agregar un producto
 router.post("/", async (request,response) =>{
     const product = new Product({
-        description: request.body.desciption,
+        description: request.body.description,
+        code: request.body.code,
         price_sale: request.body.price_sale,
         price_bought: request.body.price_bought,
         stock: request.body.stock
     })
     try{
         const newProduct = await product.save()
-        res.status(201).json()
+        response.status(201).json()
     } catch (error) {
-        res.status(500).json({message:error.message})
+        response.status(500).json({message:error.message})
     }
 })
