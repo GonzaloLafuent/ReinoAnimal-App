@@ -19,7 +19,7 @@ const vitalCanSchema = new mongoose.Schema({
     },
     venta:{
         type: Number,
-        require: True
+        require: true
     }
 })
 
