@@ -20,7 +20,7 @@ router.post("/", async (request,response) =>{
     })
     try {
         await royalCanin.save()
-        response.status(200).json({message:"producto cargado con exito"})
+        response.status(200).json({message:"Producto cargado con exito"})
     } catch(error) {
         response.status(500).json({message:error.message})
     }
