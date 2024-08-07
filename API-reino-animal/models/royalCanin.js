@@ -1,6 +1,6 @@
-const moongose = require("moongose")
+const mongoose = require("mongoose")
 
-const royalCaninSchema = new moongose.Schema({
+const royalCaninSchema = new mongoose.Schema({
     codigo:{
         type: String,
         require: true
@@ -18,3 +18,5 @@ const royalCaninSchema = new moongose.Schema({
         require: true
     }
 })
+
+module.exports = mongoose.model("RoyalCanin",royalCaninSchema)

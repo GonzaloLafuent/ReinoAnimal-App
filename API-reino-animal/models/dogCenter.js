@@ -1,6 +1,6 @@
-const moongose = require("mongoose")
+const mongoose = require("mongoose")
 
-const dogCenterSchema = new moongose.Schema({
+const dogCenterSchema = new mongoose.Schema({
     codigo:{
         type: String,
         require: true
@@ -23,4 +23,4 @@ const dogCenterSchema = new moongose.Schema({
     }
 })
 
-module.exports = moongose.model("DogCenter",dogCenterSchema)
+module.exports = mongoose.model("DogCenter",dogCenterSchema)
