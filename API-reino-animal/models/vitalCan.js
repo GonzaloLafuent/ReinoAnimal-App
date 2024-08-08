@@ -3,23 +3,23 @@ const mongoose = require("mongoose")
 const vitalCanSchema = new mongoose.Schema({
     codigo:{
         type: String,
-        require: true
+        required: true
     },
     descripcion:{
         type: String,
-        require: true
+        required: true
     },
     costo:{
         type: Number,
-        require: true
+        required: true
     },
     costoFinal:{
         type: Number,
-        require: true,
+        required: true,
     },
     venta:{
         type: Number,
-        require: true
+        required: true
     }
 })
 

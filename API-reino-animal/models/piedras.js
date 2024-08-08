@@ -3,15 +3,15 @@ const mongoose = require("mongoose")
 const piedrasSchema = new mongoose.Schema({
     descripcion: {
         type: String,
-        require: true
+        required: true
     },
     costo: {
         type: Number,
-        require: true
+        required: true
     },
     venta:{
         type: Number,
-        require:true
+        required:true
     }
 })
 
