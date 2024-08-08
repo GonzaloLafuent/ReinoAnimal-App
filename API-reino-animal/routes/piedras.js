@@ -5,7 +5,7 @@ const Piedras = require("../models/piedras")
 router.get("/", async (request,response) => {
     try{
         const piedras = await Piedras.find()
-        response.status(200),json(piedras)
+        response.status(200).json(piedras)
     } catch(error){
         response.status(500).json({message:error.message})
     }
