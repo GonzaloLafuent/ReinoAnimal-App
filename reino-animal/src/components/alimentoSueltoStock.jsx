@@ -1,8 +1,26 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import {ScrollView, SafeAreaView, StyleSheet,Text, View,StatusBar} from 'react-native';
 
-export default StorePage = () =>{
+export default AlimentoSueltoStock = () =>{
+    const [stock,setStock] = useState([])
+    const [loading,setLoading] = useState(true)
+
+    useEffect( ()=>{
+        const retriveData = async () => {
+            try{
+                const response = await fetch("http://192.168.0.249:3000/alimentoSuelto",{method:"GET"})
+                const data = await response.json()
+                setStock(data)
+                console.log(data)
+            } catch(error){
+                console.log(error.message)
+            }
+        }
+        retriveData()
+        console.log(stock)
+    },[])
+
     return(
         <SafeAreaView style={styles.container}>
             <ScrollView>
@@ -13,17 +31,19 @@ export default StorePage = () =>{
                         <Text style={styles.headerTab}>Precio</Text>
                         <Text style={styles.headerTab}>U</Text>
                     </View>
-                    <View style={styles.tab}>
-                        <View style={styles.cell}>
-                            <Text>DOG</Text>
+                    {stock.map((product) => {
+                        <View style={styles.tab} id={product.id}>
+                            <View style={styles.cell}>
+                                <Text>{product.descripcion}</Text>
+                            </View>
+                            <View style={styles.cell} width={128}>
+                                <Text>{product.marca}</Text>
+                            </View>
+                            <View style={styles.cell} width={45}>
+                                <Text>{product.rubro}</Text>
+                            </View>
                         </View>
-                        <View style={styles.cell} width={128}>
-                            <Text>125</Text>
-                        </View>
-                        <View style={styles.cell} width={45}>
-                            <Text>1</Text>
-                        </View>
-                    </View>
+                    })} 
                 </View>
             </ScrollView>
         </SafeAreaView>
