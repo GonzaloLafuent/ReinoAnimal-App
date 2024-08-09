@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import SalesPage from './src/components/salesPage';
-import AlimentoSueltoStock from './src/components/alimentoSueltoStock';
+import SalesPage from './src/pages/salesPage';
+import AlimentoSueltoStock from './src/pages/alimentoSueltoStock';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
