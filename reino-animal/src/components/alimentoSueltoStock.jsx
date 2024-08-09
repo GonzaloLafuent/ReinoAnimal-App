@@ -1,51 +1,61 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
-import {ScrollView, SafeAreaView, StyleSheet,Text, View,StatusBar} from 'react-native';
+import {ScrollView, SafeAreaView, StyleSheet,Text, View,StatusBar, ActivityIndicator} from 'react-native';
 
 export default AlimentoSueltoStock = () =>{
     const [stock,setStock] = useState([])
     const [loading,setLoading] = useState(true)
+    const [error,setError] = useState(null) 
+
+    const retriveData = async () => {
+        try{
+            const response = await fetch("http://192.168.0.249:3000/alimentoSuelto",{method:"GET"})
+            const data = await response.json()
+            setStock(data)
+        } catch(error){
+            setError(error.message)
+            console.log(error.message)
+        } finally{
+            setLoading(false)
+        }
+    }
 
     useEffect( ()=>{
-        const retriveData = async () => {
-            try{
-                const response = await fetch("http://192.168.0.249:3000/alimentoSuelto",{method:"GET"})
-                const data = await response.json()
-                setStock(data)
-                console.log(data)
-            } catch(error){
-                console.log(error.message)
-            }
-        }
         retriveData()
-        console.log(stock)
     },[])
 
     return(
         <SafeAreaView style={styles.container}>
-            <ScrollView>
-                <Text style={styles.title}>STOCK:</Text>
-                <View>
-                    <View style={styles.header}>
-                        <Text style={styles.headerTab}>Descripcion</Text>
-                        <Text style={styles.headerTab}>Precio</Text>
-                        <Text style={styles.headerTab}>U</Text>
-                    </View>
-                    {stock.map((product) => {
-                        <View style={styles.tab} id={product.id}>
-                            <View style={styles.cell}>
-                                <Text>{product.descripcion}</Text>
-                            </View>
-                            <View style={styles.cell} width={128}>
-                                <Text>{product.marca}</Text>
-                            </View>
-                            <View style={styles.cell} width={45}>
-                                <Text>{product.rubro}</Text>
-                            </View>
+            {loading? <ActivityIndicator size="large" color="#0000ff" />: 
+            <ScrollView horizontal={true}>
+                <ScrollView>
+                    <Text style={styles.title}>Alimento Suelto</Text>
+                    <View>
+                        <View style={styles.header}>
+                            <Text style={styles.headerTab}>Descripcion</Text>
+                            <Text style={styles.headerTab}>Precio</Text>
+                            <Text style={styles.headerTab}>U</Text>
                         </View>
-                    })} 
-                </View>
+                        <View>
+                            {stock.map((product) => (
+                                <View style = {styles.tab} id={product.id}>
+                                    <View style={styles.cell} width={180}>
+                                        <Text>{product.descripcion}</Text>
+                                    </View>
+                                    <View style={styles.cell} width={110}>
+                                        <Text>{product.marca}</Text>
+                                    </View>
+                                    <View style={styles.cell} width={55}>
+                                        <Text>{product.rubro}</Text>
+                                    </View>
+                                </View>
+                                
+                            ))}
+                        </View>     
+                    </View>
+                </ScrollView>
             </ScrollView>
+            }
         </SafeAreaView>
     )
 }
@@ -54,7 +64,8 @@ const styles = StyleSheet.create({
     container: {
         paddingTop: StatusBar.currentHeight,
         justifyContent: "center",
-        alignItems: "flex-start"
+        alignItems: "flex-start",
+        marginBottom: 10
     },
     title:{
         marginTop: 15,
@@ -84,6 +95,8 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         borderColor: "black",
         borderWidth: 1,
-        width: 173,
+        height: 60,
+        justifyContent: "center",
+        alignItems: "center"
     }
 })
