@@ -2,6 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import SalesPage from './src/pages/salesPage';
 import AlimentoSueltoStock from './src/pages/alimentoSueltoStock';
+import DogCenterStock from './src/pages/dogCenterStock';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -19,6 +20,7 @@ export default function App() {
       >
         <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false }}/>
         <Tab.Screen name="Alimento Suelto" component={AlimentoSueltoStock} options={{headerShown:false}}/>
+        <Tab.Screen name="DOG CENTER" component={DogCenterStock} options={{headerShown:false}}/>
       </Tab.Navigator>
     </NavigationContainer>
    

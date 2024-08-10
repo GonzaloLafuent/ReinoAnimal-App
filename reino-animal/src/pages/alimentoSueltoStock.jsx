@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState,useEffect } from 'react';
 import {ScrollView, SafeAreaView, StyleSheet,Text, View,StatusBar, ActivityIndicator} from 'react-native';
+import RowTab from '../components/rowTab';
 
 export default AlimentoSueltoStock = () =>{
     const [stock,setStock] = useState([])
@@ -24,37 +25,28 @@ export default AlimentoSueltoStock = () =>{
         retriveData()
     },[])
 
+    const normalizeJson = (jsonObject) => {
+        delete jsonObject["_id"]
+        delete jsonObject["__v"]
+        return Object.values(jsonObject)
+    } 
+
     return(
         <SafeAreaView style={styles.container}>
-            {loading? <ActivityIndicator size="large" color="#0000ff" />: 
-            <ScrollView horizontal={true}>
-                <ScrollView>
-                    <Text style={styles.title}>Alimento Suelto</Text>
+            {loading? <ActivityIndicator size="large" color="#0000ff" />:
+            <View>
+                <Text style={styles.title}>Alimento Suelto</Text>
+                <ScrollView horizontal={true} >
                     <View>
-                        <View style={styles.header}>
-                            <Text style={styles.headerTab}>Descripcion</Text>
-                            <Text style={styles.headerTab}>Precio</Text>
-                            <Text style={styles.headerTab}>U</Text>
-                        </View>
-                        <View>
+                        <RowTab height={35} width={165} backgroundColor={"black"} content={["Descipcion","Marca","Rubro"]} text_color={"white"} text_weight={"bold"}></RowTab> 
+                        <ScrollView>
                             {stock.map((product) => (
-                                <View style = {styles.tab} id={product.id}>
-                                    <View style={styles.cell} width={180}>
-                                        <Text>{product.descripcion}</Text>
-                                    </View>
-                                    <View style={styles.cell} width={110}>
-                                        <Text>{product.marca}</Text>
-                                    </View>
-                                    <View style={styles.cell} width={55}>
-                                        <Text>{product.rubro}</Text>
-                                    </View>
-                                </View>
-                                
-                            ))}
-                        </View>     
+                                <RowTab id={product._id} height={60} width={165} backgroundColor={"white"} content={normalizeJson(product)} text_color={"black"} text_weight={"bold"}></RowTab>                       
+                            ))}     
+                        </ScrollView>
                     </View>
                 </ScrollView>
-            </ScrollView>
+            </View>
             }
         </SafeAreaView>
     )
@@ -71,32 +63,6 @@ const styles = StyleSheet.create({
         marginTop: 15,
         fontWeight: "bold",
         fontSize: 20,
-    },
-    header:{
-        backgroundColor: "black",
-        height: 35,
-        width: 346,
-        marginTop: 10,
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-    },
-    headerTab: {
-        color: "white",
-        fontWeight: "bold",
-
-    },
-    tab: {
-        flexDirection: "row",
-        justifyContent: "space-around",
-        alignItems: "center",
-    },
-    cell: {
-        backgroundColor: "white",
-        borderColor: "black",
-        borderWidth: 1,
-        height: 60,
-        justifyContent: "center",
-        alignItems: "center"
-    }
+        margin: 10
+    },    
 })
