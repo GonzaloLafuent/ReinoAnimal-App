@@ -9,11 +9,40 @@ import DogCenterStock from './src/pages/dogCenterStock';
 import RoyalCaninStock from './src/pages/royalCaninStock';
 import VitalCanStock from './src/pages/vitalCanStock';
 import PiedrasStock from './src/pages/piedrasStock';
+import { useState , useEffect, createContext} from 'react';
+import alimentoSueltoStock from './src/pages/alimentoSueltoStock';
 
 
 const Tab = createBottomTabNavigator();
 
 export default function App() {
+  const [stockAlimentoSuelto,setAlimentoSuelto] = useState([])
+  const [stockDogCenter,setDogCenter] = useState([])
+  const [stockPiedras,setPiedras] = useState([])
+  const [stockVitalCan,setVitalCan] = useState([])
+  const [stockRoyalCanin,setRoyalCanin] = useState([])
+
+  const dataContext = createContext()
+
+  const retriveData = async () => {
+    const routes = ["alimentoSuelto","dogCenter","piedras","vitalCan","royalCanin"]
+    const setFunctions = [setAlimentoSuelto,setDogCenter,setPiedras,setVitalCan,setRoyalCanin]
+    for (let index = 0; index < routes.length; index++) {
+      try{   
+          const response = await fetch("http://192.168.0.249:3000/" + routes[index],{method:"GET"})
+          const data = await response.json()
+          setFunctions[index](data)
+      } catch(error){
+          console.log(error.message)
+      }  
+    }
+    setLoading(false) 
+  }
+
+  useEffect( ()=>{
+    retriveData()
+  },[])
+
   return (
     <NavigationContainer>
       <Tab.Navigator sceneContainerStyle={styles.container} screenOptions={({ route }) => ({
@@ -23,10 +52,10 @@ export default function App() {
         })} 
       >
         <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false }}/>
-        <Tab.Screen name="Alimento Suelto" component={AlimentoSueltoStock} options={{headerShown:false}}/>
-        <Tab.Screen name="DOG CENTER" component={DogCenterStock} options={{headerShown:false}}/>
-        <Tab.Screen name="ROYAL CANIN" component={RoyalCaninStock} options={{headerShown:false }}/>
-        <Tab.Screen name="VITAL CAN" component={VitalCanStock} options={{headerShown:false}}/>
+        <Tab.Screen name="SUELTOS" component={AlimentoSueltoStock} options={{headerShown:false}}/>
+        <Tab.Screen name="DOG CENTER" component={DogCenterStock}  options={{headerShown:false}}/>
+        <Tab.Screen name="ROYAL" component={RoyalCaninStock} options={{headerShown:false }}/>
+        <Tab.Screen name="VITALCAN" component={VitalCanStock} options={{headerShown:false}}/>
         <Tab.Screen name="PIEDRAS" component={PiedrasStock} options={{headerShown:false}}/>
       </Tab.Navigator>
     </NavigationContainer>

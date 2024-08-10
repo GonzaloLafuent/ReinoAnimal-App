@@ -4,24 +4,7 @@ import {ScrollView, SafeAreaView, StyleSheet,Text, View,StatusBar, ActivityIndic
 import RowTab from '../components/rowTab';
 
 export default PiedrasStock = () => {
-    const [stock,setStock] = useState([])
-    const [loading,setLoading] = useState(true)
-
-    const retriveData = async () => {
-        try{
-            const response = await fetch("http://192.168.0.249:3000/piedras",{method:"GET"})
-            const data = await response.json()
-            setStock(data)
-        } catch(error) {    
-            console.log(error)
-        } finally {
-            setLoading(false)
-        }
-    }
-
-    useEffect(()=> {
-        retriveData()
-    },[])
+    const [stock,setSotck] = useState([])
 
     const normalizeJson = (jsonObject) => {
         delete jsonObject["_id"]
@@ -31,7 +14,6 @@ export default PiedrasStock = () => {
 
     return (
         <SafeAreaView style={styles.container}>
-            {loading? <ActivityIndicator size="large" color="#0000ff" />:
             <View>
                 <Text style={styles.title}>Piedras</Text>
                 <ScrollView horizontal={true} >
@@ -45,7 +27,6 @@ export default PiedrasStock = () => {
                     </View>
                 </ScrollView>
             </View>
-            }
         </SafeAreaView>
     )
 }
