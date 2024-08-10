@@ -1,11 +1,15 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
-import SalesPage from './src/pages/salesPage';
-import AlimentoSueltoStock from './src/pages/alimentoSueltoStock';
-import DogCenterStock from './src/pages/dogCenterStock';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import SalesPage from './src/pages/salesPage';
+import AlimentoSueltoStock from './src/pages/alimentoSueltoStock';
+import DogCenterStock from './src/pages/dogCenterStock';
+import RoyalCaninStock from './src/pages/royalCaninStock';
+import VitalCanStock from './src/pages/vitalCanStock';
+import PiedrasStock from './src/pages/piedrasStock';
+
 
 const Tab = createBottomTabNavigator();
 
@@ -21,6 +25,9 @@ export default function App() {
         <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false }}/>
         <Tab.Screen name="Alimento Suelto" component={AlimentoSueltoStock} options={{headerShown:false}}/>
         <Tab.Screen name="DOG CENTER" component={DogCenterStock} options={{headerShown:false}}/>
+        <Tab.Screen name="ROYAL CANIN" component={RoyalCaninStock} options={{headerShown:false }}/>
+        <Tab.Screen name="VITAL CAN" component={VitalCanStock} options={{headerShown:false}}/>
+        <Tab.Screen name="PIEDRAS" component={PiedrasStock} options={{headerShown:false}}/>
       </Tab.Navigator>
     </NavigationContainer>
    
