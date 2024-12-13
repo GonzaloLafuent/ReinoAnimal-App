@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "p8eZB1WMmiNVs49W9h5lbspnRtGl4CuyxoZ/4iUpsgJOGcLuMUWBS2rm2SDe43mwk0psQEb11vzW6dqvHOzFNQ==",
+  "success": true,
+  "projectFilePath": "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/api.csproj",
+  "expectedPackageFiles": [
+    "/home/gonzalo/.nuget/packages/microsoft.aspnetcore.openapi/8.0.11/microsoft.aspnetcore.openapi.8.0.11.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/microsoft.openapi/1.6.14/microsoft.openapi.1.6.14.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/swashbuckle.aspnetcore/6.6.2/swashbuckle.aspnetcore.6.6.2.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/swashbuckle.aspnetcore.swagger/6.6.2/swashbuckle.aspnetcore.swagger.6.6.2.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.6.2/swashbuckle.aspnetcore.swaggergen.6.6.2.nupkg.sha512",
+    "/home/gonzalo/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.6.2/swashbuckle.aspnetcore.swaggerui.6.6.2.nupkg.sha512"
+  ],
+  "logs": []
+}
