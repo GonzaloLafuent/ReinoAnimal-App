@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/api.csproj": {}
+    "/home/gonzalo/Escritorio/ReinoAnimal-App/api/api.csproj": {}
   },
   "projects": {
-    "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/api.csproj": {
+    "/home/gonzalo/Escritorio/ReinoAnimal-App/api/api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/api.csproj",
+        "projectUniqueName": "/home/gonzalo/Escritorio/ReinoAnimal-App/api/api.csproj",
         "projectName": "api",
-        "projectPath": "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/api.csproj",
+        "projectPath": "/home/gonzalo/Escritorio/ReinoAnimal-App/api/api.csproj",
         "packagesPath": "/home/gonzalo/.nuget/packages/",
-        "outputPath": "/media/gonzalo/01d1897a-475c-4610-b982-8bc0658286dd/gonzalo/ReinoAnimal-App/api/obj/",
+        "outputPath": "/home/gonzalo/Escritorio/ReinoAnimal-App/api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/gonzalo/.nuget/NuGet/NuGet.Config"
@@ -45,6 +45,10 @@
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.6.2, )"
+            },
+            "supabase": {
+              "target": "Package",
+              "version": "[1.1.1, )"
             }
           },
           "imports": [
