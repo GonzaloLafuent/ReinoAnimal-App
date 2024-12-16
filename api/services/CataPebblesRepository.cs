@@ -11,7 +11,7 @@ namespace api.services {
             _supaBaseClient = supaBaseClient;
         }
 
-        public async Task<CatPebble> AddAsync(CatPebble entity)
+        public async Task<CatPebble?> AddAsync(CatPebble entity)
         {
             return (await _supaBaseClient.From<CatPebble>().Insert(entity)).Model;
         }
@@ -26,7 +26,7 @@ namespace api.services {
             return (await _supaBaseClient.From<CatPebble>().Get()).Models;
         }
 
-        public async Task<CatPebble> GetByIdAsync(int id)
+        public async Task<CatPebble?> GetByIdAsync(int id)
         {
             return (await _supaBaseClient.From<CatPebble>().Where(entity => entity.Id == id).Get()).Model;
         }

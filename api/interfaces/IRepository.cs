@@ -15,14 +15,14 @@ namespace api.interfaces {
         /// </summary>
         /// <param name="id">The primary key of the entity.</param>
         /// <returns>The entity if found, otherwise null.</returns>
-        Task<T> GetByIdAsync(int id);
+        Task<T?> GetByIdAsync(int id);
 
         /// <summary>
         /// Adds a new entity to the repository.
         /// </summary>
         /// <param name="entity">The entity to add.</param>
         /// <returns>The added entity.</returns>
-        Task<T> AddAsync(T entity);
+        Task<T?> AddAsync(T entity);
 
         /// <summary>
         /// Updates an existing entity in the repository.
