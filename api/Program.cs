@@ -1,3 +1,7 @@
+using api.interfaces;
+using api.models;
+using api.services;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,6 +21,11 @@ var options = new Supabase.SupabaseOptions
 var supabase = new Supabase.Client(url, key, options);
 await supabase.InitializeAsync();
 
+builder.Services.AddSingleton<BulkFoodRepository>();
+builder.Services.AddSingleton<CatPebblesRepository>();
+builder.Services.AddSingleton<RoyalCanninRepository>();
+builder.Services.AddSingleton<VitalCanRepository>();
+builder.Services.AddSingleton<DogCenterRepository>();
 builder.Services.AddSingleton(supabase);
 builder.Services.AddControllers();
 
