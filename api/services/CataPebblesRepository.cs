@@ -1,3 +1,4 @@
+using System.Reflection.Metadata;
 using api.interfaces;
 using api.models;
 using Supabase;
@@ -10,14 +11,14 @@ namespace api.services {
             _supaBaseClient = supaBaseClient;
         }
 
-        public Task<CatPebble> AddAsync(CatPebble entity)
+        public async Task<CatPebble> AddAsync(CatPebble entity)
         {
-            throw new NotImplementedException();
+            return (await _supaBaseClient.From<CatPebble>().Insert(entity)).Model;
         }
 
-        public Task DeleteAsync(CatPebble id)
+        public async Task DeleteAsync(int id)
         {
-            throw new NotImplementedException();
+            await _supaBaseClient.From<CatPebble>().Where(entity => entity.Id == id).Delete();
         }
 
         public async Task<IEnumerable<CatPebble>> GetAllAsync()
@@ -25,14 +26,17 @@ namespace api.services {
             return (await _supaBaseClient.From<CatPebble>().Get()).Models;
         }
 
-        public Task<CatPebble> GetByIdAsync(int id)
+        public async Task<CatPebble> GetByIdAsync(int id)
         {
-            throw new NotImplementedException();
+            return (await _supaBaseClient.From<CatPebble>().Where(entity => entity.Id == id).Get()).Model;
         }
 
-        public Task UpdateAsync(CatPebble entity)
+        public async Task UpdateAsync(CatPebble entity)
         {
-            throw new NotImplementedException();
+            await _supaBaseClient.From<CatPebble>().Where(catPebble => catPebble.Id == entity.Id)
+                                                   .Set(catPebble => catPebble.Description, entity.Description)
+                                                   .Set(catPebble => catPebble.Price,entity.Price)
+                                                   .Update();
         }
     }
 }

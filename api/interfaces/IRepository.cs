@@ -34,6 +34,6 @@ namespace api.interfaces {
         /// Deletes an entity from the repository by its primary key.
         /// </summary>
         /// <param name="id">The primary key of the entity to delete.</param>
-        Task DeleteAsync(T id);
+        Task DeleteAsync(int id);
     }
 }
