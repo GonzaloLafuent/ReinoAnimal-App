@@ -4,7 +4,7 @@ using api.models;
 using Supabase;
 
 namespace api.services {
-    class CatPebblesRepository : IRepository<CatPebble>
+    public class CatPebblesRepository : IRepository<CatPebble>
     {
         private readonly Client  _supaBaseClient;
         public CatPebblesRepository(Client supaBaseClient){

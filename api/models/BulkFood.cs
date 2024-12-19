@@ -1,4 +1,5 @@
 using System;
+using api.services;
 using Supabase.Postgrest.Attributes;
 using Supabase.Postgrest.Models;
 
