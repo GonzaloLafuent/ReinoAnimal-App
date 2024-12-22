@@ -7,7 +7,7 @@ namespace api.models {
     [Table("CatPebbles")]
     public class CatPebble:BaseModel {
 
-        [PrimaryKey("id",false)]
+        [PrimaryKey("Id",false)]
         public long Id {get; set;}
         
         [Column("Description")]

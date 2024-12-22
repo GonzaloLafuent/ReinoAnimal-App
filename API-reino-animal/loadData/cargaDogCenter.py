@@ -11,14 +11,14 @@ data_dogCenter = data_dogCenter.dropna()
 
 data_dogCenter = data_dogCenter.drop(index=1,axis=0)
 
-url = "http://localhost:3000/dogCenter"
+url = "http://localhost:5269/dogCenter"
 
 cant_succes = 0
 cant_error = 0
 
 
 for row in data_dogCenter.itertuples():
-    product = {"codigo": row[1], "descripcion":row[2], "costo": row[3], "costoFinal": row[4], "venta": row[5] }
+    product = {"Code": row[1], "Description":row[2], "Price": row[5] }
 
     response = requests.post(url,json=product)
         

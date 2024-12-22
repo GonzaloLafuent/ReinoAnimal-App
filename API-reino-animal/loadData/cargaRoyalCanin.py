@@ -7,13 +7,13 @@ data_royalCanin = data_royalCanin.drop(labels=[12,11,10,9,8,7,6,4,3],axis= 1).dr
 
 print(data_royalCanin)
 
-url = "http://localhost:3000/royalCanin"
+url = "http://localhost:5269/royalCannin"
 
 cant_succes = 0
 cant_error = 0
 
 for row in data_royalCanin.itertuples():
-    product = {"codigo": row[1], "descripcion":row[2], "costo": row[3], "venta": row[4] }
+    product = {"Code": row[1], "Description":row[2], "Price": row[4] }
 
     response = requests.post(url,json=product)
 

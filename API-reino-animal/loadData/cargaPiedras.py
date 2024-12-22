@@ -9,13 +9,13 @@ data_piedras = data_piedras.drop(labels=[0,3,4,6],axis=1)
 
 print(data_piedras)
 
-url = "http://localhost:3000/piedras"
+url = "http://localhost:5269/catPebble"
 
 cant_succes = 0
 cant_error = 0
 
 for row in data_piedras.itertuples():
-    product = {"descripcion":row[1], "costo": row[2], "venta": row[3] }
+    product = {"Description":row[1], "Price": row[3] }
 
     response = requests.post(url,json=product)
 

@@ -21,8 +21,8 @@ namespace Api.Controllers {
         public async Task<IActionResult> GetAll(){
             try
             {
-                var bulkFoodData = await _catPebblesRepository.GetAllAsync();
-                return Ok(bulkFoodData);    
+                var catPebbles = await _catPebblesRepository.GetAllAsync();
+                return Ok(catPebbles);    
             }
             catch (Exception e)
             {

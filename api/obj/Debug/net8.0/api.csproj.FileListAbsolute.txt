@@ -83,3 +83,6 @@
 /home/gonzalo/Escritorio/ReinoAnimal-App/api/obj/Debug/net8.0/api.pdb
 /home/gonzalo/Escritorio/ReinoAnimal-App/api/obj/Debug/net8.0/api.genruntimeconfig.cache
 /home/gonzalo/Escritorio/ReinoAnimal-App/api/obj/Debug/net8.0/ref/api.dll
+/home/gonzalo/Escritorio/ReinoAnimal-App/api/bin/Debug/net8.0/Microsoft.AspNetCore.JsonPatch.dll
+/home/gonzalo/Escritorio/ReinoAnimal-App/api/bin/Debug/net8.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+/home/gonzalo/Escritorio/ReinoAnimal-App/api/bin/Debug/net8.0/Newtonsoft.Json.Bson.dll
