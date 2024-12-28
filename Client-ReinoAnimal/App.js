@@ -51,6 +51,7 @@ export default function App() {
           tabBarIcon: ({color}) => screenOptions(route, color),
         })} 
       >
+        
         <Tab.Screen name="Ventas" component={SalesPage} options={{headerShown:false }}/>
         <Tab.Screen name="SUELTOS" component={AlimentoSueltoStock} options={{headerShown:false}}/>
         <Tab.Screen name="DOG CENTER" component={DogCenterStock}  options={{headerShown:false}}/>
