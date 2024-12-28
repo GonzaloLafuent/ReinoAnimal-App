@@ -1,6 +1,5 @@
 class ApiClient {
     private _baseUrl:string; 
-  
 
     constructor(BaseUrl:string) {
         this._baseUrl = BaseUrl;
@@ -34,23 +33,23 @@ class ApiClient {
           }
     } 
 
-    get<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
+    public get<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
         return this.request<T>(endpoint,'GET',null,headers);
     }
     
-    post<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
+    public post<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
         return this.request<T>(endpoint,'POST',body, headers);
     }
     
-    put<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
+    public put<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
         return this.request<T>(endpoint, 'PUT', body, headers);
     }
     
-    patch<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
+    public patch<T>(endpoint: string, body: any, headers?: Record<string, string>): Promise<T> {
         return this.request<T>(endpoint,'PATCH', body, headers );
     }
     
-    delete<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
+    public delete<T>(endpoint: string, headers?: Record<string, string>): Promise<T> {
         return this.request<T>(endpoint,'DELETE', null,headers);
     } 
 }
